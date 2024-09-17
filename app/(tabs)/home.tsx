@@ -1,41 +1,38 @@
-import { FlatList, RefreshControl, Text, View } from 'react-native'
+import { Alert, FlatList, RefreshControl, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import SearchInput from '@/components/SearchInput'
 import Recent from '@/components/Recent'
 import EmptyState from '@/components/EmptyState'
+import { getAllPosts } from '@/lib/appwrite'
+import useAppwrite from "@/lib/useAppwrite"
+import ArticleCard from '@/components/ArticleCard'
 
 const Home = () => {
-
-  const [data, setData] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
   const [refreshing, setRefreshing] = useState(false)
 
-  useEffect(()=>{
-    const fetchData = async ()=>{
-
-    }
-
-    fetchData()
-  },[])
+  const { data : articles, refetch} = useAppwrite(getAllPosts)
 
   const onRefresh = async ()=>{
     setRefreshing(true)
+    await refetch()
     // recall articles -> if new articles appeared
     setRefreshing(false)
   }
 
+  console.log(articles)
+
   return (
-    <SafeAreaView className='bg-white h-full'>
+    <SafeAreaView className='bg-white h-full px-4 flex flex-col'>
       <FlatList
-      data={[{id:1},{id:2},{id:3}]}
+      data={articles}
       // data={[]}
-      keyExtractor={(item)=> item.id}
+      keyExtractor={(item : any)=> item.$id}
       renderItem={({item})=>(
-        <Text className='text-3xl'>{item.id}</Text>
+        <ArticleCard article={item}/>
       )}
       ListHeaderComponent={()=>(
-        <View className='my-6 px-4 space-y-6 border border-red-500'>
+        <View className='my-5 space-y-6 '>
           <View className='justify-between items-start flex-row mb-4'>
             <View>
               <Text className='font-medium text-[32px]'>Hello Gingkoi 👋 </Text>
@@ -48,9 +45,7 @@ const Home = () => {
           <SearchInput placeholder={"Search for articles"} otherStyles={"text-3xl"}/>
 
           <View className='w-full flex-1'>
-            <Text className='font-bold text-[30px]'>Recent Articles</Text>
-
-            <Recent posts={[{id:1},{id:2},{id:3}] ?? []}/>
+            <Text className='font-bold text-[36px]'>Recent Articles</Text>
           </View>
         </View>
       )}
