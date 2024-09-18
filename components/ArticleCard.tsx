@@ -1,7 +1,20 @@
 import { View, Text, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 
-const ArticleCard = ({article : {title, thumbnail,post, avatar, author}}:any) => {
+const ArticleCard = ({article : {title, thumbnail,post, avatar, author, $createdAt}}:any) => {
+
+  const isoDate = $createdAt
+  const date = new Date(isoDate);
+
+  // Extract day, month, and year
+  const day = String(date.getDate()).padStart(2, '0'); // Ensure two digits
+  const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+  const year = date.getFullYear();
+
+  // Format as DD/MM/YYYY
+  const formattedDate = `${day}/${month}/${year}`;
+  
+
   return (
     <View className="flex flex-col items-center mb-5">
     <View className="flex flex-row gap-3 items-start">
@@ -21,12 +34,20 @@ const ArticleCard = ({article : {title, thumbnail,post, avatar, author}}:any) =>
           >
             {title}
           </Text>
-          <Text
-            className="text-sm text-textSecondary font-inter"
-            numberOfLines={1}
-          >
-            {author}
-          </Text>
+          <View className='border border-red-500'>
+              <Text
+                className="text-sm text-textSecondary font-inter"
+                // numberOfLines={1}
+              >
+                {author}
+              </Text>   
+              <Text
+                className="text-sm text-textSecondary font-inter"
+                // numberOfLines={1}
+              >
+                {formattedDate}
+              </Text>   
+          </View>
         </View>
       </View>
       </View>

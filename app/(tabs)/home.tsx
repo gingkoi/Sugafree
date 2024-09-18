@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import SearchInput from '@/components/SearchInput'
 import Recent from '@/components/Recent'
 import EmptyState from '@/components/EmptyState'
-import { getAllPosts } from '@/lib/appwrite'
+import { getAllPosts, getLatestPosts } from '@/lib/appwrite'
 import useAppwrite from "@/lib/useAppwrite"
 import ArticleCard from '@/components/ArticleCard'
 
@@ -12,6 +12,7 @@ const Home = () => {
   const [refreshing, setRefreshing] = useState(false)
 
   const { data : articles, refetch} = useAppwrite(getAllPosts)
+  const { data : recentArticles} = useAppwrite(getLatestPosts)
 
   const onRefresh = async ()=>{
     setRefreshing(true)
@@ -25,15 +26,15 @@ const Home = () => {
   return (
     <SafeAreaView className='bg-white h-full px-4 flex flex-col'>
       <FlatList
-      data={articles}
+      data={recentArticles}
       // data={[]}
       keyExtractor={(item : any)=> item.$id}
       renderItem={({item})=>(
         <ArticleCard article={item}/>
       )}
       ListHeaderComponent={()=>(
-        <View className='my-5 space-y-6 '>
-          <View className='justify-between items-start flex-row mb-4'>
+        <View className='my-5 space-y-4 '>
+          <View className='justify-between items-start flex-row mb-3'>
             <View>
               <Text className='font-medium text-[32px]'>Hello Gingkoi 👋 </Text>
               <Text className='font-medium text-[15px] text-[#B3B3B3]'>Staying healthy</Text>
@@ -42,7 +43,7 @@ const Home = () => {
               <Text>GI</Text>
             </View>
           </View>
-          <SearchInput placeholder={"Search for articles"} otherStyles={"text-3xl"}/>
+          <SearchInput/>
 
           <View className='w-full flex-1'>
             <Text className='font-bold text-[36px]'>Recent Articles</Text>
