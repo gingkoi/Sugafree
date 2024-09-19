@@ -1,52 +1,49 @@
 import { View, Text, FlatList } from 'react-native'
-import {useEffect} from 'react'
 import { useLocalSearchParams } from 'expo-router'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { searchPosts } from '@/lib/appwrite'
+import { getSinglePost } from '@/lib/appwrite'
 import useAppwrite from "@/lib/useAppwrite"
-import SearchInput from '@/components/SearchInput'
 import ArticleCard from '@/components/ArticleCard'
 import EmptyState from '@/components/EmptyState'
 
-const Search = () => {
+const Article = () => {
 
     const {query} = useLocalSearchParams();
-    const { data : articles, refetch} = useAppwrite(()=> searchPosts(query))
+    const { data : article} = useAppwrite(()=> getSinglePost("66e9aaef003a9185da43"))
 
-    useEffect(() => {
-        refetch();
-      }, [query]);
+    console.log(article)
 
-    
     return (
         <SafeAreaView className='bg-white h-full px-4 flex flex-col'>
           <FlatList
-          data={articles}
+          data={article}
           // data={[]}
-          keyExtractor={(item : any)=> item.$id}
+          keyExtractor={(item : any)=> item}
           renderItem={({item})=>(
-            <ArticleCard article={item}/>
+            // <ArticleCard article={item}/>
+            <View>
+                <Text>{item}</Text>
+            </View>
           )}
           ListHeaderComponent={()=>(
             <View className='mb-5 space-y-4 '>
               <View className='justify-between items-start flex-row mb-3'>
                 <View>
-                  <Text className='font-base text-[20px]'>Search results</Text>
-                  <Text className='text-[32px] text-black font-bold'>{query}</Text>
+                  <Text className='font-base text-[20px]'>Article</Text>
+                  <Text className='text-[32px] text-black font-bold'>Hello</Text>
                 </View>
               </View>
-              <SearchInput initialQuery={query} refetch={refetch}/>
     
             </View>
           )}
           ListEmptyComponent={()=>(
             <EmptyState 
-            title="No article found"
-            subtitle="Find information from AI chatbot"/>
+            title="404"
+            subtitle="Cannot find article"/>
           )}
           />
         </SafeAreaView>
       )
 }
 
-export default Search
+export default Article

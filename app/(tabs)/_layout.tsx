@@ -62,6 +62,16 @@ const TabsLayout = () => {
           )
         }
         }/>
+        <Tabs.Screen name='profile' options={{
+          title:"Profile",
+          headerShown:false,
+          tabBarIcon:({
+            color,focused
+          }) =>(
+            <TabBarIcon name={focused ? 'person-circle' : 'person-circle-outline'} color={color} />
+          )
+        }
+        }/>
       </Tabs>
     </>
   )

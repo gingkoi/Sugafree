@@ -1,8 +1,10 @@
-import { View, Text, TouchableOpacity, Image } from 'react-native'
+import { View, Text, TouchableOpacity, Image, Alert} from 'react-native'
+import { usePathname, router } from 'expo-router'
 import React from 'react'
 
 const ArticleCard = ({article : {title, thumbnail,post, avatar, author, $createdAt}}:any) => {
 
+  const pathname = usePathname()
   const isoDate = $createdAt
   const date = new Date(isoDate);
 
@@ -55,6 +57,14 @@ const ArticleCard = ({article : {title, thumbnail,post, avatar, author, $created
           activeOpacity={0.7}
         //   onPress={() => setPlay(true)}
           className="w-full h-56 rounded-xl mt-3 relative flex justify-center items-center"
+          onPress={()=>{
+            if(!title){
+              return Alert.alert('Missing query', "Please input something to search results across database")
+            }
+  
+            if(pathname.startsWith("/article")) router.setParams({title})
+            else router.push(`/article/${title}`);
+          }}
         >
         <Image
             source={{ uri: thumbnail }}
