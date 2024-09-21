@@ -11,7 +11,7 @@ const FormField = ({title,value,placeholder,handleChangeText,otherStyles, ...pro
   return (
     <View className={`space-y-2 ${otherStyles}`}>
       <Text className='text-xl font-bold font-inter'>{title}</Text>
-      <View className='w-full h-16 px-4 bg-[#F8F8F8] drop-shadow-2xl rounded-xl focus:border-primary flex-row'>
+      <View className='w-full h-16 px-4 bg-[#F8F8F8] drop-shadow-2xl rounded-xl focus:border focus:border-primary flex-row'>
         <TextInput 
         className='flex-1 text-black'
         value={value}

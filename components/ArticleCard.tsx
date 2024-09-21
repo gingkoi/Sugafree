@@ -1,10 +1,17 @@
 import { View, Text, TouchableOpacity, Image, Alert} from 'react-native'
-import { usePathname, router } from 'expo-router'
-import React from 'react'
+import { usePathname, router, Redirect } from 'expo-router'
+import {useState} from 'react'
+import Article from '@/app/article/[article]'
 
-const ArticleCard = ({article : {title, thumbnail,post, avatar, author, $createdAt}}:any) => {
+const ArticleCard = ({article : {title, thumbnail,post, avatar, author, $createdAt, $id}}:any) => {
 
-  const pathname = usePathname()
+  // console.log("From articleCard",$id)
+  // const [testId, setTestId] = useState("Hello")
+
+  // console.log(testId)
+
+  const currentId = $id
+
   const isoDate = $createdAt
   const date = new Date(isoDate);
 
@@ -36,7 +43,7 @@ const ArticleCard = ({article : {title, thumbnail,post, avatar, author, $created
           >
             {title}
           </Text>
-          <View className='border border-red-500'>
+          <View className='flex-row justify-between'>
               <Text
                 className="text-sm text-textSecondary font-inter"
                 // numberOfLines={1}
@@ -48,22 +55,16 @@ const ArticleCard = ({article : {title, thumbnail,post, avatar, author, $created
                 // numberOfLines={1}
               >
                 {formattedDate}
-              </Text>   
+              </Text> 
           </View>
         </View>
       </View>
       </View>
       <TouchableOpacity
           activeOpacity={0.7}
-        //   onPress={() => setPlay(true)}
           className="w-full h-56 rounded-xl mt-3 relative flex justify-center items-center"
           onPress={()=>{
-            if(!title){
-              return Alert.alert('Missing query', "Please input something to search results across database")
-            }
-  
-            if(pathname.startsWith("/article")) router.setParams({title})
-            else router.push(`/article/${title}`);
+            router.push({pathname:`/article/[article]`,params:{currentId:currentId}});
           }}
         >
         <Image

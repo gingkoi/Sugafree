@@ -1,8 +1,4 @@
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import Feather from '@expo/vector-icons/Feather';
-
-
-import { View, Text } from 'react-native'
 import { Tabs, Redirect } from 'expo-router'
 import React from 'react'
 

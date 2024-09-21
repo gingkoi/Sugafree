@@ -24,8 +24,6 @@ const Home = () => {
     setRefreshing(false)
   }
 
-  // console.log(articles)
-
   return (
     <SafeAreaView className='bg-white h-full px-4 flex flex-col'>
       <FlatList

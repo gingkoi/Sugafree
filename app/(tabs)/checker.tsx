@@ -1,11 +1,11 @@
 import { View, Text } from 'react-native'
 import React from 'react'
+import Siblings from '../(diabetesChecker)/siblings'
+import { Redirect } from 'expo-router'
 
 const Checker = () => {
   return (
-    <View>
-      <Text>Checker</Text>
-    </View>
+    <Redirect href={"/(diabetesChecker)/siblings"}/>
   )
 }
 
