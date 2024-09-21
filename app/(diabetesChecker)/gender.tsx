@@ -4,14 +4,16 @@ import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import CustomButton from '@/components/CustomButton'
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { useGlobalContext } from '@/context/GlobalProvider'
 
 const genderPath = require("@/assets/images/diabetesChecker/gender.jpg")
 
 const Gender = () => {
 
+  const {gender, setGender} = useGlobalContext()
+
   const nextPage = (score:any)=>{
-    // setSibling(score)
-    // console.log(score)
+    setGender(score)
     router.push("/(diabetesChecker)/doctor")
   }
 
@@ -47,7 +49,7 @@ const Gender = () => {
                 {/* Buttons */}
                 <View className='w-full mt-10'>
                 <CustomButton title={"Male"} containerStyles={"w-full"} textStyles={"text-2xl"} handlePress={()=> nextPage(1)}/>
-                <CustomButton title={"Female"} containerStyles={"w-full mt-5"} textStyles={"text-2xl"} handlePress={()=> nextPage(2)}/>
+                <CustomButton title={"Female"} containerStyles={"w-full mt-5"} textStyles={"text-2xl"} handlePress={()=> nextPage(0)}/>
                 </View>
             </View>
         </View>

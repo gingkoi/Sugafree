@@ -4,11 +4,18 @@ import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import CustomButton from '@/components/CustomButton'
 import Ionicons from '@expo/vector-icons/Ionicons';
-import InputForm from '@/components/diabetesChecker/InputForm'
+import BmiCalculator from '@/components/diabetesChecker/BmiCalculator'
 
 const yourselfPath = require("@/assets/images/diabetesChecker/yourself.jpg")
 
 const Yourself = () => {
+
+  const nextPage = ()=>{
+    // setSibling(score)
+    // console.log(score)
+    router.push("/(diabetesChecker)/results")
+  }
+
   return (
     <SafeAreaView className='flex-1 bg-white'>
       <ScrollView automaticallyAdjustKeyboardInsets={true} className="flex-1">
@@ -41,9 +48,8 @@ const Yourself = () => {
                 </View>
                 {/* Buttons */}
                 <View className='w-full'>
-                  <InputForm title={"Height"} placeholder={"Enter Height (cm)"}/>
-                  <InputForm title={"Weight"} placeholder={"Enter Weight (kg)"}/>
-                <CustomButton title={"Next"} containerStyles={"w-full mt-5"} textStyles={"text-2xl"} handlePress={()=> router.push("/(diabetesChecker)/results")}/>
+                  <BmiCalculator/>
+                <CustomButton title={"Next"} containerStyles={"w-full mt-5"} textStyles={"text-2xl"} handlePress={()=> nextPage()}/>
                 </View>
             </View>
         </View>

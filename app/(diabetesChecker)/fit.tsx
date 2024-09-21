@@ -4,14 +4,16 @@ import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import CustomButton from '@/components/CustomButton'
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { useGlobalContext } from '@/context/GlobalProvider'
 
 const fitPath = require("@/assets/images/diabetesChecker/fit.jpg")
 
 const Fit = () => {
 
+  const {fit, setFit} = useGlobalContext()
+
   const nextPage = (score:any)=>{
-    // setSibling(score)
-    // console.log(score)
+    setFit(score)
     router.push("/(diabetesChecker)/yourself")
   }
 
@@ -46,8 +48,8 @@ const Fit = () => {
                 </View>
                 {/* Buttons */}
                 <View className='w-full mt-10'>
-                <CustomButton title={"Yes"} containerStyles={"w-full"} textStyles={"text-2xl"} handlePress={()=> router.push("/(diabetesChecker)/yourself")}/>
-                <CustomButton title={"No"} containerStyles={"w-full mt-5"} textStyles={"text-2xl"} handlePress={()=> router.push("/(diabetesChecker)/yourself")}/>
+                <CustomButton title={"Yes"} containerStyles={"w-full"} textStyles={"text-2xl"} handlePress={()=> nextPage(0)}/>
+                <CustomButton title={"No"} containerStyles={"w-full mt-5"} textStyles={"text-2xl"} handlePress={()=> nextPage(2)}/>
                 </View>
             </View>
         </View>

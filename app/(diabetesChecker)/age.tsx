@@ -4,14 +4,16 @@ import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import CustomButton from '@/components/CustomButton'
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { useGlobalContext } from '@/context/GlobalProvider'
 
 const agePath = require("@/assets/images/diabetesChecker/age.jpg")
 
 const Age = () => {
 
+  const {age, setAge} = useGlobalContext()
+
   const nextPage = (score:any)=>{
-    // setSibling(score)
-    // console.log(score)
+    setAge(score)
     router.push("/(diabetesChecker)/gender")
   }
   return (
@@ -42,10 +44,10 @@ const Age = () => {
                 </View>
                 {/* Buttons */}
                 <View className='w-full mt-10'>
-                <CustomButton title={"Younger than 40"} containerStyles={"w-full"} textStyles={"text-2xl"} handlePress={()=> nextPage(1)}/>
-                <CustomButton title={"40-49 Years"} containerStyles={"w-full mt-3"} textStyles={"text-2xl"} handlePress={()=> nextPage(2)}/>
-                <CustomButton title={"50-59 Years"} containerStyles={"w-full mt-3"} textStyles={"text-2xl"} handlePress={()=> nextPage(3)}/>
-                <CustomButton title={"60+ Years"} containerStyles={"w-full mt-3"} textStyles={"text-2xl"} handlePress={()=> nextPage(4)}/>
+                <CustomButton title={"Younger than 45"} containerStyles={"w-full"} textStyles={"text-2xl"} handlePress={()=> nextPage(0)}/>
+                <CustomButton title={"45-54 Years"} containerStyles={"w-full mt-3"} textStyles={"text-2xl"} handlePress={()=> nextPage(2)}/>
+                <CustomButton title={"55-64 Years"} containerStyles={"w-full mt-3"} textStyles={"text-2xl"} handlePress={()=> nextPage(3)}/>
+                <CustomButton title={"65+ Years"} containerStyles={"w-full mt-3"} textStyles={"text-2xl"} handlePress={()=> nextPage(4)}/>
                 </View>
             </View>
         </View>

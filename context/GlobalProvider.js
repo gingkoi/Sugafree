@@ -14,6 +14,11 @@ const GlobalProvider = ({ children }) => {
 
   // Diabetes Checker
   const [sibling, setSibling] = useState(0);
+  const [age, setAge] = useState(0);
+  const [gender, setGender] = useState(0);
+  const [doctor, setDoctor] = useState(0);
+  const [fit, setFit] = useState(0);
+  const [bmi, setBmi] = useState(0);
 
   useEffect(() => {
     getCurrentUser()
@@ -43,7 +48,17 @@ const GlobalProvider = ({ children }) => {
         setUser,
         loading,
         sibling,
-        setSibling
+        setSibling,
+        age,
+        setAge,
+        gender,
+        setGender,
+        doctor,
+        setDoctor,
+        fit,
+        setFit,
+        bmi,
+        setBmi
       }}
     >
       {children}

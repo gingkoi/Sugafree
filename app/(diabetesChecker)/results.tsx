@@ -2,18 +2,33 @@ import { View, Text, TouchableOpacity} from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import CustomButton from '@/components/CustomButton'
-import { router } from 'expo-router'
-import Ionicons from '@expo/vector-icons/Ionicons';
+import { Redirect, router } from 'expo-router'
+import { useGlobalContext } from '@/context/GlobalProvider'
+import LowRisk from './lowRisk'
+import MidRisk from './midRisk'
+import HighRisk from './highRisk'
 
 const Results = () => {
-  return (
-    <SafeAreaView className='bg-white h-full'>
-        <View className='h-full flex-col justify-center items-center'>
-        <Text>Results</Text>
-        <CustomButton title={"Back to home"} containerStyles={"mt-5"} textStyles={"text-2xl"} handlePress={()=> router.push("/(tabs)/home")}/>
-        </View>
-    </SafeAreaView>
-  )
+
+  const {sibling, age, gender, doctor, fit, bmi} = useGlobalContext()
+
+  const totalScore = sibling + age + gender + doctor + fit + bmi
+
+  console.log("Total score: ",totalScore)
+
+  if(totalScore < 5){
+    return (
+      <LowRisk/>
+    )
+  } else if (totalScore >= 5 && totalScore <= 8){
+    return(
+      <MidRisk/>
+    )
+  } else{
+    return(
+      <HighRisk/>
+    )
+  }
 }
 
 export default Results
