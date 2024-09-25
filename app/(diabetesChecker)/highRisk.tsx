@@ -1,4 +1,4 @@
-import { View, Text, Image , TouchableOpacity, ScrollView} from 'react-native'
+import { View, Text, Image , ScrollView} from 'react-native'
 import {router} from "expo-router"
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'

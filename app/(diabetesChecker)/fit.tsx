@@ -10,7 +10,7 @@ const fitPath = require("@/assets/images/diabetesChecker/fit.jpg")
 
 const Fit = () => {
 
-  const {fit, setFit} = useGlobalContext()
+  const {setFit} = useGlobalContext()
 
   const nextPage = (score:any)=>{
     setFit(score)

@@ -10,7 +10,7 @@ const agePath = require("@/assets/images/diabetesChecker/age.jpg")
 
 const Age = () => {
 
-  const {age, setAge} = useGlobalContext()
+  const {setAge} = useGlobalContext()
 
   const nextPage = (score:any)=>{
     setAge(score)

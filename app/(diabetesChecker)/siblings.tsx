@@ -10,7 +10,7 @@ const siblingPath = require("@/assets/images/diabetesChecker/siblings.jpg")
 
 const Siblings = () => {
 
-  const {sibling, setSibling} = useGlobalContext()
+  const {setSibling} = useGlobalContext()
   
   const nextPage = (score:any)=>{
     setSibling(score)

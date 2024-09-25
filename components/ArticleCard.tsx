@@ -27,6 +27,13 @@ const ArticleCard = ({article : {title, thumbnail,post, avatar, author, $created
   return (
     <View className="flex flex-col items-center mb-5">
     <View className="flex flex-row gap-3 items-start">
+      <TouchableOpacity 
+      className='w-full px-2' 
+      onPress={()=>{
+            router.push({pathname:`/article/[article]`,params:{currentId:currentId}});
+          }}
+      activeOpacity={0.7}    
+          >
       <View className="flex justify-center items-center flex-row flex-1">
         <View className="w-[46px] h-[46px] rounded-full border border-red-500 flex justify-center items-center p-0.5">
           <Image
@@ -59,6 +66,7 @@ const ArticleCard = ({article : {title, thumbnail,post, avatar, author, $created
           </View>
         </View>
       </View>
+      </TouchableOpacity>
       </View>
       <TouchableOpacity
           activeOpacity={0.7}

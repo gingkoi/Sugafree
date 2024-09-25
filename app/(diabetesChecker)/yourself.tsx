@@ -11,8 +11,6 @@ const yourselfPath = require("@/assets/images/diabetesChecker/yourself.jpg")
 const Yourself = () => {
 
   const nextPage = ()=>{
-    // setSibling(score)
-    // console.log(score)
     router.push("/(diabetesChecker)/results")
   }
 

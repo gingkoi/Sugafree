@@ -28,16 +28,16 @@ const TabsLayout = () => {
           )
         }
         }/>        
-        <Tabs.Screen name='recipes' options={{
-          title:"Recipes",
+        <Tabs.Screen name='read' options={{
+          title:"Read",
           headerShown:false,
           tabBarIcon:({
             color,focused
           }) =>(
-            <TabBarIcon name={focused ? 'cafe' : 'cafe-outline'} color={color} />
+            <TabBarIcon name={focused ? 'book' : 'book-outline'} color={color} />
           )
         }
-        }/>        
+        }/>       
         <Tabs.Screen name='checker' options={{
           title:"Checker",
           headerShown:false,
@@ -57,17 +57,7 @@ const TabsLayout = () => {
             <TabBarIcon name={focused ? 'chatbubble' : 'chatbubble-outline'} color={color} />
           )
         }
-        }/>
-        <Tabs.Screen name='profile' options={{
-          title:"Profile",
-          headerShown:false,
-          tabBarIcon:({
-            color,focused
-          }) =>(
-            <TabBarIcon name={focused ? 'person-circle' : 'person-circle-outline'} color={color} />
-          )
-        }
-        }/>
+        }/>       
       </Tabs>
     </>
   )

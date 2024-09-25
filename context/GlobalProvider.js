@@ -1,4 +1,5 @@
-import { getCurrentUser } from "@/lib/appwrite";
+import { getCurrentUser, getMultiplePostsByIds, getUserBookmarks} from "@/lib/appwrite";
+import useAppwrite from "@/lib/useAppwrite";
 import React, { createContext, useContext, useEffect, useState } from "react";
 
 // import { getCurrentUser } from "../lib/appwrite";
@@ -19,6 +20,7 @@ const GlobalProvider = ({ children }) => {
   const [doctor, setDoctor] = useState(0);
   const [fit, setFit] = useState(0);
   const [bmi, setBmi] = useState(0);
+
 
   useEffect(() => {
     getCurrentUser()

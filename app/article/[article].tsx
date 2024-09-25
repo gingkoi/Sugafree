@@ -1,22 +1,60 @@
-import { View, Text, FlatList, Image, ScrollView, TouchableOpacity } from 'react-native'
-import { useLocalSearchParams, useGlobalSearchParams,router } from 'expo-router'
+import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native'
+import { useLocalSearchParams,router } from 'expo-router'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { getSinglePost } from '@/lib/appwrite'
+import { bookmarkPost, checkIfBookmarked, getMultiplePostsByIds, getSinglePost, getUserBookmarks, removeBookmark } from '@/lib/appwrite'
 import useAppwrite from "@/lib/useAppwrite"
-import ArticleEnd from '@/components/ArticleEnd'
+import Ionicons from '@expo/vector-icons/Ionicons';
+import { useState, useEffect } from 'react'
+import { useGlobalContext } from '@/context/GlobalProvider'
 
-const backPath = require("@/assets/images/back.png")
-const unSavePath = require("@/assets/images/unsave.png")
 
 const Article = () => {
 
     const {currentId} = useLocalSearchParams();
-    // console.log("From [Article]",currentId)
-
-
+    const {user} = useGlobalContext()
     const { data : article} = useAppwrite(()=> getSinglePost(currentId))
 
-    // 66e85a0300060dd4a1b6
+    const [bookmark, setBookmark] = useState("bookmark-outline")
+    const [isBookmarked, setIsBookmarked] = useState(false); 
+    const [loading, setLoading] = useState(false); 
+
+    useEffect(() => {
+      // Check bookmark status when component mounts
+      const checkBookmarkStatus = async () => {
+          try {
+              const bookmarked = await checkIfBookmarked(user.$id, currentId);
+              setIsBookmarked(bookmarked);
+          } catch (error) {
+              console.error("Error checking bookmark status:", error);
+          }
+      };
+      checkBookmarkStatus();
+  }, [currentId, user.$id]);
+
+  
+
+  const toggleBookmark = async () => {
+    if (loading) return;  // Prevent multiple presses during loading
+
+    setLoading(true);  // Set loading state while processing
+
+    try {
+        if (isBookmarked) {
+            // Call the removeBookmark function if the post is already bookmarked
+            await removeBookmark(user.$id, currentId);
+            setIsBookmarked(false);  // Update state to unbookmarked
+        } else {
+            // Call the bookmarkPost function if the post is not bookmarked
+            await bookmarkPost(user.$id, currentId);
+            setIsBookmarked(true);   // Update state to bookmarked
+        }
+    } catch (error) {
+        console.error('Error toggling bookmark:', error);
+    } finally {
+        setLoading(false);  // Turn off loading state after operation completes
+    }
+  };
+
 
     const isoDate = article.$createdAt
     const date = new Date(isoDate);
@@ -30,25 +68,28 @@ const Article = () => {
     const formattedDate = `${day}/${month}/${year}`;
 
 
-    // console.log(article)
-
     return (
         <SafeAreaView className='bg-primary h-full'>
           <ScrollView>
             <View className='pt-3'>
               <View className='bg-primary pb-3'>
                 <View className='w-full px-4'>
-                  <View className='flex-row justify-between border border-red-500'>
+                  <View className='flex-row justify-between'>
                     <TouchableOpacity
-                      activeOpacity={0.7}
-                      className=""
-                      onPress={()=>{
-                        router.push("/(tabs)/home");
-                    }}
-                    >
-                      <Image className='h-8 w-8' source={backPath}/>
+                        activeOpacity={0.7}
+                        className=""
+                        onPress={()=>{
+                          router.push("/(tabs)/read");
+                      }}
+                      >
+                        <Ionicons name="chevron-back" size={50} color="white" />
                     </TouchableOpacity>
-                    <Image className='h-8 w-8' source={unSavePath}/>
+                    <View>
+                    <TouchableOpacity onPress={toggleBookmark} disabled={loading}>
+                    <Ionicons name={isBookmarked ? 'bookmark' : 'bookmark-outline'} size={50} color="white" />
+                    </TouchableOpacity>
+                    {/* {loading && <Text>Loading...</Text>} */}
+                    </View>
                   </View>
                   {/* Title, Author & Data section */}
                   <View className='mt-3'>

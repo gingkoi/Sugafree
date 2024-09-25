@@ -10,7 +10,7 @@ const doctorPath = require("@/assets/images/diabetesChecker/doctor.jpg")
 
 const Doctor = () => {
 
-  const {doctor, setDoctor} = useGlobalContext()
+  const {setDoctor} = useGlobalContext()
 
   const nextPage = (score:any)=>{
     setDoctor(score)
