@@ -64,10 +64,17 @@ const Profile = () => {
                 <Ionicons name="mail-outline" size={15} color="#808080" />
                 <Text className='text-sm font-light text-textSecondary'>{user.email}</Text>
               </View>
-            </View>  
+            </View>
+            <TouchableOpacity
+            activeOpacity={0.7}
+            >
+            <View className='p-4 bg-primary rounded-xl my-3'>
+              <Text className='text-white font-bold text-lg'>Edit Profile</Text>
+            </View>
+            </TouchableOpacity>  
 
             {/* Details Section */}
-            <View className=' w-full mt-5 space-y-1'>
+            <View className=' w-full space-y-1'>
               <Text className='text-lg font-inter font-bold'>Details</Text>
               <View className='border border-textSecondary/50 p-3 rounded-lg space-y-2'>
                 <View className='flex-row items-center space-x-2 border-b border-textSecondary/50 pb-2'>
@@ -110,7 +117,7 @@ const Profile = () => {
                 <TouchableOpacity
                 activeOpacity={0.4}
                 onPress={()=>{
-                  router.push("/saved/savedArticles")}}
+                  router.push("/saved/savedRecipes")}}
                 >
                   <View className='flex-row items-center space-x-3 py-4'>
                   <Ionicons name="book-outline" size={24} color="black" />

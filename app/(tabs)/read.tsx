@@ -4,13 +4,15 @@ import { TabView, SceneMap, TabBar } from "react-native-tab-view";
 import Home from './home';
 import Article from '../read/article';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Recipe from '../read/recipes';
 
 const FirstRoute = () => (
-  <Article/>
+  <Recipe/>
+  
 );
 
 const SecondRoute = () => (
-  <View style={{ flex: 1, backgroundColor: '#41D2F2' }} />
+  <Article/>
 );
 
 const renderScene = SceneMap({
@@ -44,8 +46,8 @@ export default function TabViewExample() {
 
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
-    { key: 'first', title: 'Articles' },
-    { key: 'second', title: 'Recipes' },
+    { key: 'first', title: 'Recipes' },
+    { key: 'second', title: 'Articles' },
   ]);
 
   return (

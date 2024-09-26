@@ -14,6 +14,7 @@ const Article = () => {
     const {user} = useGlobalContext()
     const { data : article} = useAppwrite(()=> getSinglePost(currentId))
 
+
     const [bookmark, setBookmark] = useState("bookmark-outline")
     const [isBookmarked, setIsBookmarked] = useState(false); 
     const [loading, setLoading] = useState(false); 
