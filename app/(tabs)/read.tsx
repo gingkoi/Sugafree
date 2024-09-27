@@ -51,7 +51,7 @@ export default function TabViewExample() {
   ]);
 
   return (
-    <SafeAreaView className='flex-1'>
+    <SafeAreaView className='flex-1 bg-white'>
     <TabView
       navigationState={{ index, routes }}
       renderScene={renderScene}

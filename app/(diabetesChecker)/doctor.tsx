@@ -18,7 +18,7 @@ const Doctor = () => {
   }
 
   return (
-    <SafeAreaView>
+    <SafeAreaView className='bg-white'>
         <View className='bg-white h-full w-full flex-col'>
             {/* Back Button */}
             <View className='pb-5 px-4 mt-10'>
