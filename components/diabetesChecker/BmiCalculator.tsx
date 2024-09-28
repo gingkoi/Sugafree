@@ -1,5 +1,5 @@
 import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native'
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { useGlobalContext } from '@/context/GlobalProvider'
 
 
@@ -18,6 +18,12 @@ const BmiCalculator = () => {
       setWeight(value);
     }  
   };
+
+  useEffect(() => {
+    if (weight && height) {
+      calculateBMI(Number(weight), Number(height))
+    }
+  }, [weight, height])
 
   function calculateBMI(weight: number, height: number) {
     // BMI formula: weight (kg) / height (m)^2

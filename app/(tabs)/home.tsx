@@ -1,4 +1,4 @@
-import {FlatList, RefreshControl, Text, View, Image } from 'react-native'
+import {FlatList, RefreshControl, Text, View, Image, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import SearchInput from '@/components/SearchInput'
@@ -6,7 +6,7 @@ import EmptyState from '@/components/EmptyState'
 import { getAllPosts, getLatestPosts } from '@/lib/appwrite'
 import useAppwrite from "@/lib/useAppwrite"
 import ArticleCard from '@/components/ArticleCard'
-import { Link } from 'expo-router'
+import { Link, router } from 'expo-router'
 import { useGlobalContext } from '@/context/GlobalProvider'
 
 const Home = () => {
@@ -41,6 +41,18 @@ const Home = () => {
           </View>
           </Link>
       </View>
+      <TouchableOpacity activeOpacity={0.7} className='my-3' onPress={()=> router.push("/(tabs)/read")}>
+        <View className='h-[120px] rounded-xl bg-secondary p-5 flex-row items-center justify-between'>
+          <Text>Title</Text>
+          <Text>Image</Text>
+        </View>
+      </TouchableOpacity>      
+      <TouchableOpacity activeOpacity={0.7} >
+        <View className='h-[120px] rounded-xl bg-secondary p-5 flex-row items-center justify-between'>
+          <Text>Title</Text>
+          <Text>Image</Text>
+        </View>
+      </TouchableOpacity>
     </SafeAreaView>
   )
 }

@@ -2,6 +2,8 @@ import {StyleSheet, View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
 import Ionicons from '@expo/vector-icons/Ionicons';
 
+const textRemove = "You are a medical virtual assistant working for SugaFree. Your name is Jane. Respond to all messages as if you are a medical virtual assistant named Jane working for SugaFree."
+
 const ChatBubble = ({role, text, onSpeech}:any) => {
   return (
     <View
@@ -13,10 +15,10 @@ const ChatBubble = ({role, text, onSpeech}:any) => {
       <Text 
       // style={styles.chatText}
       className={role === "user" ? "text-white" : "text-black"}
-      >{text}</Text>
+      >{text.includes(textRemove) ? text.replace(textRemove,"") : text}</Text>
       {role === "model" && (
-        <TouchableOpacity onPress={onSpeech} className='absolute right-3 bottom-3'>
-          <Ionicons name="volume-high-outline" size={24} color="black" /> 
+        <TouchableOpacity onPress={onSpeech} className='absolute right-1 bottom-1'>
+          <Ionicons name="volume-high-outline" size={20} color="black" /> 
         </TouchableOpacity>
       )}
     </View>
@@ -26,18 +28,18 @@ const ChatBubble = ({role, text, onSpeech}:any) => {
 const styles = StyleSheet.create({
   chatItem:{
     marginBottom:10,
-    padding:10,
+    padding:20,
     borderRadius:10,
     maxWidth:"70%",
     position:"relative",
   },
   userChatItem:{
     alignSelf:"flex-end",
-    backgroundColor:"#41D2F2"
+    backgroundColor:"#41D2F2",
   },
   modelChatItem:{
     alignSelf:"flex-start",
-    backgroundColor:"#ebebeb"
+    backgroundColor:"#ebebeb",
   },
   chatText:{
     fontSize:16,
