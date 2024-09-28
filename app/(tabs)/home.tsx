@@ -1,4 +1,4 @@
-import {FlatList, RefreshControl, Text, View, Image, TouchableOpacity } from 'react-native'
+import {Text, View, Image, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import SearchInput from '@/components/SearchInput'
@@ -8,6 +8,13 @@ import useAppwrite from "@/lib/useAppwrite"
 import ArticleCard from '@/components/ArticleCard'
 import { Link, router } from 'expo-router'
 import { useGlobalContext } from '@/context/GlobalProvider'
+import HomeCard from '@/components/home/HomeCard'
+
+const precheckPath = require("@/assets/images/home/precheck.png")
+const virtualAssistantPath = require("@/assets/images/home/virtualAssistant.png")
+const savedAriclePath = require("@/assets/images/home/savedArticle.png")
+const savedRecipePath = require("@/assets/images/home/savedRecipe.png")
+const medicalHistoryPath = require("@/assets/images/home/medicalHistory.png")
 
 const Home = () => {
   const {user} = useGlobalContext()
@@ -40,19 +47,12 @@ const Home = () => {
             />
           </View>
           </Link>
-      </View>
-      <TouchableOpacity activeOpacity={0.7} className='my-3' onPress={()=> router.push("/(tabs)/read")}>
-        <View className='h-[120px] rounded-xl bg-secondary p-5 flex-row items-center justify-between'>
-          <Text>Title</Text>
-          <Text>Image</Text>
-        </View>
-      </TouchableOpacity>      
-      <TouchableOpacity activeOpacity={0.7} >
-        <View className='h-[120px] rounded-xl bg-secondary p-5 flex-row items-center justify-between'>
-          <Text>Title</Text>
-          <Text>Image</Text>
-        </View>
-      </TouchableOpacity>
+      </View>    
+      <HomeCard title={"Pre-diabetic Check"} link={"/(tabs)/checker"} imagePath={precheckPath}/>
+      <HomeCard title={"Medical History"} link={"/(tabs)/checker"} imagePath={medicalHistoryPath}/>
+      <HomeCard title={"Virtual Assistant"} link={"/chat/chatbotAI"} imagePath={virtualAssistantPath}/>
+      <HomeCard title={"Saved Articles"} link={"/saved/savedArticles"} imagePath={savedAriclePath}/>
+      <HomeCard title={"Saved Recipes"} link={"/saved/savedRecipes"} imagePath={savedRecipePath}/>
     </SafeAreaView>
   )
 }

@@ -99,33 +99,6 @@ const Profile = () => {
                 </View>                
               </View>
             </View>
-
-            {/* Saved Section */}
-            <View className=' w-full mt-5 space-y-1'>
-              <Text className='text-lg font-inter font-bold'>Saved</Text>
-              <View className='border-2 border-primary p-3 rounded-lg space-y-2'>
-                <TouchableOpacity
-                activeOpacity={0.4}
-                onPress={()=>{
-                  router.push("/saved/savedArticles")}}
-                >
-                  <View className='flex-row items-center space-x-3 border-b border-primary py-4'>
-                  <Ionicons name="newspaper-outline" size={24} color="black" />
-                  <Text className='text-xl font-medium'>Articles</Text>
-                  </View>  
-                </TouchableOpacity>                 
-                <TouchableOpacity
-                activeOpacity={0.4}
-                onPress={()=>{
-                  router.push("/saved/savedRecipes")}}
-                >
-                  <View className='flex-row items-center space-x-3 py-4'>
-                  <Ionicons name="book-outline" size={24} color="black" />
-                  <Text className='text-xl font-medium'>Recipes</Text>
-                  </View>  
-                </TouchableOpacity>                                                  
-              </View>
-            </View>
             </View>
         </SafeAreaView>
       )

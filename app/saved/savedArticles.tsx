@@ -62,7 +62,7 @@ const SaveArticles = () => {
                         activeOpacity={0.7}
                         className=""
                         onPress={()=>{
-                          router.push("/profile/profilePage");
+                          router.push("/(tabs)/home");
                       }}
                       >
                         <Ionicons name="chevron-back" size={50} color="#41D2F2" />
