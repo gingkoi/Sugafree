@@ -1,10 +1,11 @@
-import { View, Text, Image , ScrollView} from 'react-native'
+import { View, Text, Image , ScrollView, TouchableOpacity} from 'react-native'
 import {router} from "expo-router"
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import Ionicons from '@expo/vector-icons/Ionicons';
 import CustomButton from '@/components/CustomButton'
 
-const highRiskPath = require("@/assets/images/diabetesChecker/highRisk.jpg")
+const gbmPath = require("@/assets/images/gbm.jpg")
 
 const GlucoseTester = () => {
 
@@ -12,26 +13,31 @@ const GlucoseTester = () => {
     <SafeAreaView className='flex-1 bg-white'>
       <ScrollView automaticallyAdjustKeyboardInsets={true} className="flex-1">
         <View className='bg-white h-full w-full flex-col mt-8'>
+        <View className='pb-5 px-4'>
+            <TouchableOpacity
+                      activeOpacity={0.7}
+                      className=""
+                      onPress={()=>{
+                        router.push("/journal/addJournal");
+                    }}
+                    >
+                      <Ionicons name="chevron-back" size={50} color="#41D2F2" />
+                    </TouchableOpacity>
+            </View>
             <View className='mx-14 flex-col justify-center items-center'>
                 {/* Image */}
-                <View className=''>
-                    <Image source={highRiskPath} resizeMode='contain' className='h-60 w-60'/>
-                </View>
+                <TouchableOpacity>
+                  <Image source={gbmPath} resizeMode='contain' className='h-80 w-80'/>
+                </TouchableOpacity>
                 {/* Question */}
                 <View>
-                    <Text className='font-merriBlack text-[36px] text-center'>
-                    You’re at high risk for diabetes
+                    <Text className='font-merriBlack text-[36px] text-center mt-5'>
+                    Click to start scanning
                     </Text>
                     <Text className='text-center mt-3 text-base'>
-                    You’re likely to have prediabetes and are at high risk for type 2 diabetes.{"\n"}Only your doctor can diagnose diabetes or prediabetes.
+                    {`Enable Bluetooth on Your Phone\nEnsure that your phone’s Bluetooth is turned on.\n\nThis is necessary for the app to scan and connect to the glucose meter.`}
                     </Text>
-                    <Text className='text-center mt-3 text-base font-bold text-red-500'>Don’t wait for symptoms — take action now.</Text>
                     
-                </View>
-                {/* Buttons */}
-                <View className='w-full'>
-                <CustomButton title={"Back to Home"} containerStyles={"w-full mt-5"} textStyles={"text-2xl"} handlePress={()=> router.push("/(tabs)/home")}/>
-                {/* <CustomButton title={"Retake Test"} containerStyles={"w-full mt-5"} textStyles={"text-2xl text-white"} handlePress={()=> router.push("/(tabs)/checker")}/> */}
                 </View>
             </View>
         </View>

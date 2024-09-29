@@ -35,7 +35,7 @@ const Home = () => {
             <Text className='font-medium text-[32px]'>Hello {user?.username} 👋 </Text>
             <Text className='font-medium text-[15px] text-[#B3B3B3]'>Staying healthy</Text>
           </View>
-          <Link href={"/profile/profilePage"}>
+          <Link href={"/(tabs)/profile"}>
           <View className="w-[50px] h-[50px] border border-secondary rounded-full flex justify-center items-center">
             <Image
               source={{ uri: user?.avatar }}

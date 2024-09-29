@@ -1,10 +1,20 @@
 import {StyleSheet, View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
 import Ionicons from '@expo/vector-icons/Ionicons';
-
-const textRemove = "You are a medical virtual assistant working for SugaFree. Your name is Jane. Respond to all messages as if you are a medical virtual assistant named Jane working for SugaFree."
+import { useGlobalContext } from '@/context/GlobalProvider';
 
 const ChatBubble = ({role, text, onSpeech}:any) => {
+
+  const { 
+    profileAge,
+    profileGender,
+    profileHeight,
+    profileWeight,
+    profileRace
+  } = useGlobalContext()
+
+  const textRemove = `You are a medical virtual assistant working for SugaFree. Your name is Jane. Respond to all messages as if you are a medical virtual assistant named Jane working for SugaFree. Here are some details about me if i asked please refer in the following. My gender is ${profileGender}, ${profileAge} years old, ${profileHeight}cm in height, ${profileWeight}kg in weight and my race is ${profileRace}`;
+
   return (
     <View
     style={[

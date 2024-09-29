@@ -96,9 +96,9 @@ const AddJournalPage = () => {
                 onChangeText={setGlucoseLevel}
                 keyboardType='numeric'
             />
-            <View className='bg-primary p-5 rounded-2xl'>
+            <TouchableOpacity activeOpacity={0.7} className='bg-primary p-5 rounded-2xl' onPress={()=> router.push("/journal/glucoseTester")}>
                 <Fontisto name="test-bottle" size={30} color="white"/>
-            </View>
+            </TouchableOpacity>
         </View>
         </View>
         {/* <CustomButton title={"Pick a Date"} onPress={() => setShowPicker(true)}/> */}

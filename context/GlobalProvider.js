@@ -11,6 +11,7 @@ const GlobalProvider = ({ children }) => {
   const [isLogged, setIsLogged] = useState(false);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [profile, setProfile] = useState(null)
 
 
   // Diabetes Checker
@@ -21,6 +22,14 @@ const GlobalProvider = ({ children }) => {
   const [fit, setFit] = useState(0);
   const [bmi, setBmi] = useState(0);
 
+  // Profile
+  const [profileGender, setProfileGender] = useState("")
+  const [profileAge, setProfileAge] = useState("")
+  const [profileHeight, setProfileHeight] = useState("")
+  const [profileWeight, setProfileWeight] = useState("")
+  const [profileRace, setProfileRace] = useState("")
+
+  
 
   useEffect(() => {
     getCurrentUser()
@@ -60,7 +69,17 @@ const GlobalProvider = ({ children }) => {
         fit,
         setFit,
         bmi,
-        setBmi
+        setBmi,
+        profileAge,
+        setProfileAge,
+        profileGender,
+        setProfileGender,
+        profileHeight,
+        setProfileHeight,
+        profileWeight,
+        setProfileWeight,
+        profileRace,
+        setProfileRace
       }}
     >
       {children}
