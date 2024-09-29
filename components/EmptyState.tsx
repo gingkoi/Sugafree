@@ -5,7 +5,7 @@ import { router } from 'expo-router'
 
 const noSearchPath = require("../assets/images/noSearch.png")
 
-const EmptyState = ({title, subtitle}:any) => {
+const EmptyState = ({title, subtitle, buttonTitle, linkPath}:any) => {
   return (
     <View className='justify-center items-center px-4'>
         <Image source={noSearchPath} resizeMode='contain' className='w-[270px] h-[215px]'/>
@@ -13,9 +13,9 @@ const EmptyState = ({title, subtitle}:any) => {
         <Text className='text-md'>{subtitle}</Text>
 
         <CustomButton 
-        title={"Go to AI Chatbot"} 
+        title={buttonTitle} 
         containerStyles={"w-full my-5"}
-        handlePress={()=> router.push("/(tabs)/chat")}/>
+        handlePress={()=> router.push(linkPath)}/>
     </View>
   )
 }

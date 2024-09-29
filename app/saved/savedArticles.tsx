@@ -6,7 +6,6 @@ import useAppwrite from "@/lib/useAppwrite"
 import ArticleCard from '@/components/ArticleCard'
 import EmptyState from '@/components/EmptyState'
 import { useGlobalContext } from '@/context/GlobalProvider'
-import InfoBox from '@/components/InfoBox'
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useEffect, useState } from 'react'
 
@@ -96,8 +95,11 @@ const SaveArticles = () => {
           )}
           ListEmptyComponent={()=>(
             <EmptyState 
-            title="No articles or recipes saved"
-            subtitle="Click on the save icon to save them"/>
+            title="No recipes saved"
+            subtitle="Click on the save icon to save them"
+            linkPath={'/chat/chatbotAI'}
+            buttonTitle={"Go to SugaFree chatbot"}
+            />
           )}
         //   refreshControl={
         //   <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />

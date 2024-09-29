@@ -13,16 +13,8 @@ const Article = () => {
   const {user} = useGlobalContext()
   const [refreshing, setRefreshing] = useState(false)
 
-  // const { data : articles, refetch} = useAppwrite(getAllPosts)
-  // 66ec546c0007343c71f0
   const { data : recentArticles, refetch} = useAppwrite(()=>getUserPosts("66ec546c0007343c71f0"))
 
-  // const onRefresh = async ()=>{
-  //   setRefreshing(true)
-  //   await refetch()
-  //   // recall articles -> if new articles appeared
-  //   setRefreshing(false)
-  // }
 
 
   return (

@@ -6,14 +6,14 @@ const TabsLayout = () => {
   return (
     <>
       <Tabs screenOptions={{
-        tabBarShowLabel:true,
+        tabBarShowLabel:false,
         tabBarActiveTintColor:"#FFFFFF",
         tabBarInactiveTintColor:"#FFFFFF",
         tabBarStyle:{
           backgroundColor:"#41D2F2",
           paddingTop:10,
           paddingBottom:10,
-          height:68
+          height:70
         }
         
       }
@@ -38,23 +38,23 @@ const TabsLayout = () => {
           )
         }
         }/>       
-        <Tabs.Screen name='checker' options={{
-          title:"Checker",
+        <Tabs.Screen name='notification' options={{
+          title:"Notification",
           headerShown:false,
           tabBarIcon:({
             color,focused
           }) =>(
-            <TabBarIcon name={focused ? 'eye' : 'eye-outline'} color={color} />
+            <TabBarIcon name={focused ? 'notifications' : 'notifications-outline'} color={color} />
           )
         }
         }/>        
-        <Tabs.Screen name='chat' options={{
-          title:"Chatbot",
+        <Tabs.Screen name='profile' options={{
+          title:"Profile",
           headerShown:false,
           tabBarIcon:({
             color,focused
           }) =>(
-            <TabBarIcon name={focused ? 'chatbubble' : 'chatbubble-outline'} color={color} />
+            <TabBarIcon name={focused ? 'person-circle' : 'person-circle-outline'} color={color} />
           )
         }
         }/>       

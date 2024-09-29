@@ -1,11 +1,8 @@
 import {Text, View, Image, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import SearchInput from '@/components/SearchInput'
-import EmptyState from '@/components/EmptyState'
 import { getAllPosts, getLatestPosts } from '@/lib/appwrite'
 import useAppwrite from "@/lib/useAppwrite"
-import ArticleCard from '@/components/ArticleCard'
 import { Link, router } from 'expo-router'
 import { useGlobalContext } from '@/context/GlobalProvider'
 import HomeCard from '@/components/home/HomeCard'
@@ -48,8 +45,8 @@ const Home = () => {
           </View>
           </Link>
       </View>    
-      <HomeCard title={"Pre-diabetic Check"} link={"/(tabs)/checker"} imagePath={precheckPath}/>
-      <HomeCard title={"Medical History"} link={"/(tabs)/checker"} imagePath={medicalHistoryPath}/>
+      <HomeCard title={"Pre-diabetic Check"} link={"/(diabetesChecker)/siblings"} imagePath={precheckPath}/>
+      <HomeCard title={"Medical Journal"} link={"/journal/journal"} imagePath={medicalHistoryPath}/>
       <HomeCard title={"Virtual Assistant"} link={"/chat/chatbotAI"} imagePath={virtualAssistantPath}/>
       <HomeCard title={"Saved Articles"} link={"/saved/savedArticles"} imagePath={savedAriclePath}/>
       <HomeCard title={"Saved Recipes"} link={"/saved/savedRecipes"} imagePath={savedRecipePath}/>
