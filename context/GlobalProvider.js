@@ -22,12 +22,6 @@ const GlobalProvider = ({ children }) => {
   const [fit, setFit] = useState(0);
   const [bmi, setBmi] = useState(0);
 
-  // Profile
-  const [profileGender, setProfileGender] = useState("")
-  const [profileAge, setProfileAge] = useState("")
-  const [profileHeight, setProfileHeight] = useState("")
-  const [profileWeight, setProfileWeight] = useState("")
-  const [profileRace, setProfileRace] = useState("")
 
   
 
@@ -37,6 +31,7 @@ const GlobalProvider = ({ children }) => {
         if (res) {
           setIsLogged(true);
           setUser(res);
+          
         } else {
           setIsLogged(false);
           setUser(null);
@@ -70,16 +65,8 @@ const GlobalProvider = ({ children }) => {
         setFit,
         bmi,
         setBmi,
-        profileAge,
-        setProfileAge,
-        profileGender,
-        setProfileGender,
-        profileHeight,
-        setProfileHeight,
-        profileWeight,
-        setProfileWeight,
-        profileRace,
-        setProfileRace
+        profile,
+        setProfile
       }}
     >
       {children}

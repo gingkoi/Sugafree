@@ -2,22 +2,23 @@ import { View, Text, TouchableOpacity, Image } from 'react-native'
 import { router } from 'expo-router'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { signOut } from '@/lib/appwrite'
-import useAppwrite from "@/lib/useAppwrite"
 import { useGlobalContext } from '@/context/GlobalProvider'
 import Ionicons from '@expo/vector-icons/Ionicons';
+
+import { getProfile } from '@/lib/appwrite'
+import useAppwrite from "@/lib/useAppwrite"
+
 
 
 const Profile = () => {
 
   const {user,
-        setUser, 
-        setIsLoggedIn,
-        profileAge,
-        profileGender,
-        profileHeight,
-        profileWeight,
-        profileRace
-      } = useGlobalContext()
+    setUser, 
+    setIsLoggedIn,
+  } = useGlobalContext()
+
+  const { data : profile} = useAppwrite(()=>getProfile(user.$id))
+  console.log(profile)
 
     const logout = async()=>{
         await signOut()
@@ -83,23 +84,23 @@ const Profile = () => {
               <View className='border border-textSecondary/50 p-3 rounded-lg space-y-2'>
                 <View className='flex-row items-center space-x-2 border-b border-textSecondary/50 pb-2'>
                 <Ionicons name="male" size={24} color="black" />
-                <Text>Gender: {!profileGender ? "Undefined" : `${profileGender}`}</Text>
+                <Text>Gender: {profile.gender}</Text>
                 </View>                
                 <View className='flex-row items-center border-b border-textSecondary/50 space-x-2 pb-2'>
                 <Ionicons name="body" size={24} color="black" />
-                <Text>Age: {!profileAge ? "Undefined" : `${profileAge} Years Old`}</Text>
+                <Text>Age: {profile.age}</Text>
                 </View>                
                 <View className='flex-row items-center border-b border-textSecondary/50 space-x-2 pb-2'>
                 <Ionicons name="man" size={24} color="black" />
-                <Text>Height: {!profileHeight ? "Undefined" : `${profileHeight}cm`}</Text>
+                <Text>Height: {profile.height}</Text>
                 </View>                
                 <View className='flex-row items-center border-b border-textSecondary/50 space-x-2 pb-2'>
                 <Ionicons name="scale-outline" size={24} color="black" />
-                <Text>Weight: {!profileWeight ? "Undefined" : `${profileWeight}kg`}</Text>
+                <Text>Weight: {profile.weight}</Text>
                 </View>                
                 <View className='flex-row items-center space-x-2'>
                 <Ionicons name="color-filter-outline" size={24} color="black" />
-                <Text>Race: {!profileRace ? "Undefined" : `${profileRace}`}</Text>
+                <Text>Race: {profile.race}</Text>
                 </View>                
               </View>
             </View>
