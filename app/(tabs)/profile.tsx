@@ -18,7 +18,7 @@ const Profile = () => {
   } = useGlobalContext()
 
   const { data : profile} = useAppwrite(()=>getProfile(user.$id))
-  console.log(profile)
+  // console.log(profile)
 
     const logout = async()=>{
         await signOut()
@@ -72,7 +72,7 @@ const Profile = () => {
             </View>
             <TouchableOpacity
             activeOpacity={0.7}
-            onPress={()=> router.push("/profile/profilePage")}
+            onPress={()=> router.push("/profile/updateProfile")}
             className='p-4 bg-primary rounded-xl my-3'
             >
               <Text className='text-white font-bold text-lg'>Edit Profile</Text>
@@ -84,23 +84,23 @@ const Profile = () => {
               <View className='border border-textSecondary/50 p-3 rounded-lg space-y-2'>
                 <View className='flex-row items-center space-x-2 border-b border-textSecondary/50 pb-2'>
                 <Ionicons name="male" size={24} color="black" />
-                <Text>Gender: {profile.gender}</Text>
+                <Text>Gender: {!profile?.gender ? "Undefined" : profile?.gender}</Text>
                 </View>                
                 <View className='flex-row items-center border-b border-textSecondary/50 space-x-2 pb-2'>
                 <Ionicons name="body" size={24} color="black" />
-                <Text>Age: {profile.age}</Text>
+                <Text>Age: {!profile?.age ? "Undefined" : profile?.age}</Text>
                 </View>                
                 <View className='flex-row items-center border-b border-textSecondary/50 space-x-2 pb-2'>
                 <Ionicons name="man" size={24} color="black" />
-                <Text>Height: {profile.height}</Text>
+                <Text>Height: {!profile?.height ? "Undefined" : profile?.height}</Text>
                 </View>                
                 <View className='flex-row items-center border-b border-textSecondary/50 space-x-2 pb-2'>
                 <Ionicons name="scale-outline" size={24} color="black" />
-                <Text>Weight: {profile.weight}</Text>
+                <Text>Weight: {!profile?.weight ? "Undefined" : profile?.weight}</Text>
                 </View>                
                 <View className='flex-row items-center space-x-2'>
                 <Ionicons name="color-filter-outline" size={24} color="black" />
-                <Text>Race: {profile.race}</Text>
+                <Text>Race: {!profile?.race ? "Undefined" : profile?.race}</Text>
                 </View>                
               </View>
             </View>

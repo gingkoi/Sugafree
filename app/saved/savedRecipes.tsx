@@ -61,14 +61,14 @@ const SaveRecipe = () => {
                         activeOpacity={0.7}
                         className=""
                         onPress={()=>{
-                          router.push("/profile/profilePage");
+                          router.push("/(tabs)/home");
                       }}
                       >
                         <Ionicons name="chevron-back" size={50} color="#41D2F2" />
               </TouchableOpacity>
             </View>
               <View>
-              <Text className='text-xl font-bold'>Saved Articles</Text>
+              <Text className='text-xl font-bold'>Saved Recipes</Text>
               </View>
               <View>
               <TouchableOpacity
@@ -95,10 +95,10 @@ const SaveRecipe = () => {
           )}
           ListEmptyComponent={()=>(
             <EmptyState 
-            title="No recipes saved"
+            title="No articles saved"
             subtitle="Click on the save icon to save them"
-            linkPath={'/chat/chatbotAI'}
-            buttonTitle={"Go to SugaFree chatbot"}
+            linkPath={'/(tabs)/read'}
+            buttonTitle={"Go to read section"}
             />
           )}
         //   refreshControl={

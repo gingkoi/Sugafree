@@ -52,9 +52,9 @@ const SetupProfile = () => {
               <TouchableOpacity
                 activeOpacity={0.7}
                 className=""
-                onPress={logout}
+                // onPress={logout}
                 >
-                <Ionicons name="chevron-back" size={50} color="#41D2F2" />
+                <Ionicons name="chevron-back" size={50} color="white" />
             </TouchableOpacity>
         </View>
             <View>

@@ -35,15 +35,15 @@ const ArticleCard = ({article : {title, thumbnail,post, avatar, author, $created
       activeOpacity={0.7}    
           >
       <View className="flex justify-center items-center flex-row flex-1">
-        <View className="w-[46px] h-[46px] rounded-full border border-red-500 flex justify-center items-center p-0.5">
+        {/* <View className="w-[46px] h-[46px] rounded-full border border-red-500 flex justify-center items-center p-0.5">
           <Image
             source={{ uri: avatar }}
             className="w-full h-full rounded-full"
             resizeMode="cover"
           />
-        </View>
+        </View> */}
 
-        <View className="flex justify-center flex-1 ml-3 gap-y-1">
+        <View className="flex justify-center flex-1 gap-y-1">
           <Text
             className="font-semibold text-xl text-black"
             numberOfLines={1}

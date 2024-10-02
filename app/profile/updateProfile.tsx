@@ -6,7 +6,8 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { useState } from 'react';
 import SelectDropdown from 'react-native-select-dropdown'
 import Entypo from '@expo/vector-icons/Entypo';
-import { updateProfile } from '@/lib/appwrite';
+import { getProfileId, updateProfileId } from '@/lib/appwrite';
+import useAppwrite from "@/lib/useAppwrite"
 
 
 const genderList = [
@@ -22,9 +23,12 @@ const raceList = [
   {title: 'Others'},
 ]
 
-const Profile = () => {
+const updateProfile = () => {
 
   const {user} = useGlobalContext()
+  const { data : profileId} = useAppwrite(()=>getProfileId(user.$id))
+
+  console.log(profileId)
 
   const [gender, setGender] = useState("")
     const [age, setAge] = useState("")
@@ -33,7 +37,7 @@ const Profile = () => {
     const [race, setRace] = useState("")
 
     const handleUpdateProfile = async () => {
-      await updateProfile(user.$id, gender, age, height, weight, race);
+      await updateProfileId(profileId, gender, age, height, weight, race);
       router.push("/(tabs)/profile")
     }; 
 
@@ -228,4 +232,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Profile
+export default updateProfile

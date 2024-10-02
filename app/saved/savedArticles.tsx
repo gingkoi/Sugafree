@@ -95,10 +95,10 @@ const SaveArticles = () => {
           )}
           ListEmptyComponent={()=>(
             <EmptyState 
-            title="No recipes saved"
+            title="No articles saved"
             subtitle="Click on the save icon to save them"
-            linkPath={'/chat/chatbotAI'}
-            buttonTitle={"Go to SugaFree chatbot"}
+            linkPath={'/(tabs)/read'}
+            buttonTitle={"Go to read section"}
             />
           )}
         //   refreshControl={

@@ -1,16 +1,28 @@
-import {Text, View, Image, TouchableOpacity } from 'react-native'
+import {Text, View, Image, TouchableOpacity, StyleSheet } from 'react-native'
 import { router } from 'expo-router'
 import React from 'react'
 
 const HomeCard = ({title, imagePath, link}:any) => {
   return (
-    <TouchableOpacity activeOpacity={0.7} className='my-1' onPress={()=> router.push(link)}>
-        <View className='h-[120px] rounded-xl bg-primary p-5 flex-row items-center justify-between'>
-        <Text className='font-black text-3xl text-white'>{title}</Text>
-        <Image source={imagePath} resizeMode='cover' className='h-20 w-20'/>
-        </View>
-  </TouchableOpacity>  
+    <TouchableOpacity activeOpacity={0.7} onPress={()=> router.push(link)} className='flex-grow rounded-2xl bg-white mx-2' style={styles.shadow}>
+      <View className='flex-col items-center justify-center h-full space-y-1'>
+        <Image source={imagePath} className='h-[125px] w-[125px]'/>
+        <Text className='font-medium'>{title}</Text>
+      </View>
+    </TouchableOpacity> 
   )
 }
+
+const styles = StyleSheet.create({
+  shadow: {
+    shadowColor: '#000000', 
+
+    shadowOffset: {width: 0, height: 20}, 
+    
+    shadowRadius: 2, 
+    
+    elevation: 8.5, 
+  }
+})
 
 export default HomeCard

@@ -31,7 +31,7 @@ const HighRisk = () => {
                 {/* Buttons */}
                 <View className='w-full'>
                 <CustomButton title={"Back to Home"} containerStyles={"w-full mt-5"} textStyles={"text-2xl"} handlePress={()=> router.push("/(tabs)/home")}/>
-                <CustomButton title={"Retake Test"} containerStyles={"w-full mt-5"} textStyles={"text-2xl text-white"} handlePress={()=> router.push("/(tabs)/checker")}/>
+                <CustomButton title={"Retake Test"} containerStyles={"w-full mt-5"} textStyles={"text-2xl text-white"} handlePress={()=> router.push("/(diabetesChecker)/siblings")}/>
                 </View>
             </View>
         </View>
