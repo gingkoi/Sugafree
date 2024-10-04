@@ -97,13 +97,6 @@ const Article = () => {
                     <Text className='text-[32px] text-white font-black'>{article.title}</Text>
                     <View className='flex-row justify-between items-center mt-2'>
                       <View className='flex-row items-center space-x-2'>
-                        <View className="w-[46px] h-[46px] rounded-full border border-red-500 flex justify-center items-center p-0.5">
-                          <Image
-                            source={{ uri: article.avatar }}
-                            className="w-full h-full rounded-full"
-                            resizeMode="cover"
-                          />
-                        </View>
                         <Text className='text-white font-bold text-md'>{article.author}</Text>
                       </View>
                       <Text className='text-white font-bold text-md'>{formattedDate}</Text>

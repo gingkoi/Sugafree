@@ -6,6 +6,30 @@ import EmptyState from '@/components/EmptyState'
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router } from 'expo-router';
 
+function formatDate(isoDateStr:any) {
+  const date = new Date(isoDateStr);
+
+  // Extracting date parts
+  const day = date.getDate();
+  const month = date.getMonth() + 1; // getMonth() returns 0-indexed month, so we add 1
+  const year = date.getFullYear();
+
+  // Extracting time parts
+  let hours = date.getHours();
+  const minutes = date.getMinutes();
+  const isPM = hours >= 12;
+  
+  // Convert to 12-hour format
+  hours = hours % 12 || 12; // Handle 12 PM and 12 AM
+  const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes; // Ensure minutes are always 2 digits
+  
+  // Format the AM/PM part
+  const ampm = isPM ? 'pm' : 'am';
+
+  // Return formatted string
+  return `${day}/${month}/${year} ${hours}.${formattedMinutes}${ampm}`;
+}
+
 const JournalPage = () => {
     const {user} = useGlobalContext()
     const [journals, setJournals] = useState([]);
@@ -36,12 +60,6 @@ const JournalPage = () => {
     setJournals(updatedJournals);
   };
 
-  const onDateChange = (event:any, selectedDate:any) => {
-    setShowPicker(false);
-    if (selectedDate) {
-      setDate(selectedDate);
-    }
-  };
 
   return (
     <SafeAreaView className='bg-white h-full pt-12 px-4'>
@@ -81,12 +99,12 @@ const JournalPage = () => {
         keyExtractor={(item : any) => item.$id}
         renderItem={({ item }) => (
           <View className='px-5 pb-5 pt-4 bg-primary rounded-2xl relative my-2'>
-            <Text className='font-bold text-white text-3xl'>{new Date(item.date).toLocaleDateString()}</Text>
+            <Text className='font-bold text-white text-3xl'>{formatDate(item.$createdAt).replace(" ",`\n`)}</Text>
             <Text className='text-white text-base my-5 border border-white p-4 rounded-xl'>{item.entry}</Text>
             <View className='flex-col justify-between'>
                 <View className='flex-row items-center space-x-1'>
                     <Ionicons name="heart" size={24} color="white" />
-                    <Text className='text-white font-bold text-lg'>Mood: {item.mood}</Text>
+                    <Text className='text-white font-bold text-lg'>Meal Type: {item?.mealType ? item.mealType : "Undefined"}</Text>
                 </View>
                 <View className='flex-row items-center space-x-1 mt-2'>
                     <Ionicons name="flask-sharp" size={24} color="white" />

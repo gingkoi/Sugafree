@@ -35,11 +35,11 @@ const Profile = () => {
               <TouchableOpacity
                         activeOpacity={0.7}
                         className=""
-                        onPress={()=>{
-                          router.push("/(tabs)/home");
-                      }}
+                      //   onPress={()=>{
+                      //     router.push("/(tabs)/home");
+                      // }}
                       >
-                        <Ionicons name="chevron-back" size={50} color="#41D2F2" />
+                        <Ionicons name="chevron-back" size={50} color="white" />
               </TouchableOpacity>
             </View>
               <View>
@@ -80,27 +80,27 @@ const Profile = () => {
 
             {/* Details Section */}
             <View className=' w-full space-y-1'>
-              <Text className='text-lg font-inter font-bold'>Details</Text>
+              <Text className='text-xl font-inter font-bold'>Details</Text>
               <View className='border border-textSecondary/50 p-3 rounded-lg space-y-2'>
                 <View className='flex-row items-center space-x-2 border-b border-textSecondary/50 pb-2'>
                 <Ionicons name="male" size={24} color="black" />
-                <Text>Gender: {!profile?.gender ? "Undefined" : profile?.gender}</Text>
+                <Text className='text-base'>Gender: {!profile?.gender ? "Undefined" : profile?.gender}</Text>
                 </View>                
                 <View className='flex-row items-center border-b border-textSecondary/50 space-x-2 pb-2'>
                 <Ionicons name="body" size={24} color="black" />
-                <Text>Age: {!profile?.age ? "Undefined" : profile?.age}</Text>
+                <Text className='text-base'>Age: {!profile?.age ? "Undefined" : profile?.age} years old</Text>
                 </View>                
                 <View className='flex-row items-center border-b border-textSecondary/50 space-x-2 pb-2'>
                 <Ionicons name="man" size={24} color="black" />
-                <Text>Height: {!profile?.height ? "Undefined" : profile?.height}</Text>
+                <Text className='text-base'>Height: {!profile?.height ? "Undefined" : profile?.height} cm</Text>
                 </View>                
                 <View className='flex-row items-center border-b border-textSecondary/50 space-x-2 pb-2'>
                 <Ionicons name="scale-outline" size={24} color="black" />
-                <Text>Weight: {!profile?.weight ? "Undefined" : profile?.weight}</Text>
+                <Text className='text-base'>Weight: {!profile?.weight ? "Undefined" : profile?.weight} kg</Text>
                 </View>                
                 <View className='flex-row items-center space-x-2'>
                 <Ionicons name="color-filter-outline" size={24} color="black" />
-                <Text>Race: {!profile?.race ? "Undefined" : profile?.race}</Text>
+                <Text className='text-base'>Race: {!profile?.race ? "Undefined" : profile?.race}</Text>
                 </View>                
               </View>
             </View>

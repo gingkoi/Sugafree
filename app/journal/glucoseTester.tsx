@@ -14,15 +14,6 @@ const GlucoseTester = () => {
       <ScrollView automaticallyAdjustKeyboardInsets={true} className="flex-1">
         <View className='bg-white h-full w-full flex-col mt-8'>
         <View className='pb-5 px-4'>
-            <TouchableOpacity
-                      activeOpacity={0.7}
-                      className=""
-                      onPress={()=>{
-                        router.push("/journal/addJournal");
-                    }}
-                    >
-                      <Ionicons name="chevron-back" size={50} color="#41D2F2" />
-                    </TouchableOpacity>
             </View>
             <View className='mx-14 flex-col justify-center items-center'>
                 {/* Image */}

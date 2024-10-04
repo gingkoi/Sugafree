@@ -54,7 +54,7 @@ const SaveRecipe = () => {
             <RecipeCard article={item}/>
           )}
           ListHeaderComponent={()=>(
-            <View className="w-full flex justify-center items-center mt-6 mb-12 px-4">
+            <View className="w-full flex justify-center items-center mt-6 mb-6 px-4">
             <View className='flex-row justify-between items-center w-full'>
             <View>
               <TouchableOpacity
