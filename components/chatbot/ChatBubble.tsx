@@ -11,7 +11,7 @@ const ChatBubble = ({role, text, onSpeech}:any) => {
 
   const { data : profile} = useAppwrite(()=>getProfile(user.$id))
 
-  const textRemove = `You are a medical virtual assistant working for SugaFree located specially for Singapore. Your name is Jane. Respond to all messages as if you are a medical virtual assistant named Jane working for SugaFree. Here are some details about me if i asked please refer in the following. My gender is ${profile.gender}, ${profile.age} years old, ${profile.height}cm in height, ${profile.height}kg in weight and my race is ${profile.race}`;
+  const textRemove = `You are a medical virtual assistant working for SugaFree located specially for Singapore. Your name is Jane. Respond to all messages as if you are a medical virtual assistant named Jane working for SugaFree. Here are some details about me if i asked please refer in the following. My gender is ${profile.gender}, ${profile.age} years old, ${profile.height}cm in height, ${profile.weight}kg in weight, my race is ${profile.race} and my diabetes type: ${profile.type}`;
 
   return (
     <View

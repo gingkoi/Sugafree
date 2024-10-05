@@ -1,12 +1,13 @@
-import {Text, View, Image, TouchableOpacity, StyleSheet, ScrollView } from 'react-native'
-import React, { useState, useEffect } from 'react'
+import {Text, View, Image, StyleSheet, ScrollView } from 'react-native'
+import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { Link, Redirect, router } from 'expo-router'
+import { Link } from 'expo-router'
 import { useGlobalContext } from '@/context/GlobalProvider'
 import HomeCard from '@/components/home/HomeCard'
-
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import { fetchLatestJournal } from '@/lib/appwrite';
+import useAppwrite from '@/lib/useAppwrite';
 import GlucoseStatus from '@/components/GlucoseStatus'
+import EmptyGlucoseStatus from '@/components/EmptyGlucoseStatus'
 
 
 const precheckPath = require("@/assets/images/home/precheck.png")
@@ -15,11 +16,11 @@ const savedAriclePath = require("@/assets/images/home/savedArticle.png")
 const savedRecipePath = require("@/assets/images/home/savedRecipe.png")
 const medicalHistoryPath = require("@/assets/images/home/medicalHistory.png")
 const trackPath = require("@/assets/images/track.png")
-const homeScreenPath = require("@/assets/images/home/homeScreen.jpg")
 const logoPath = require("@/assets/images/Logo.png")
 
 const Home = () => {
   const {user} = useGlobalContext()
+  const { data : latestJournal } = useAppwrite(()=> fetchLatestJournal(user.$id))
 
   return (
       <SafeAreaView className='bg-white h-full px-4 pt-5 flex flex-col'>
@@ -38,8 +39,9 @@ const Home = () => {
               <Text className='font-medium text-[32px]'>Hi, {user?.username} 👋 </Text>
               <Text className='font-medium text-[15px] text-[#B3B3B3]'>Have a nice day</Text>
             </View>
-        </View>  
-        <GlucoseStatus/> 
+        </View>
+        {!latestJournal ? <EmptyGlucoseStatus/> : <GlucoseStatus/>}
+        {/* <GlucoseStatus/>  */}
         <View className='flex-col items-center justify-center w-full relative mb-1'>
               <Image source={logoPath} className='w-[200px] h-[80px]' resizeMode='contain'/>
               <Text className='absolute z-10 bottom-0 text-base font-light'>Features</Text>

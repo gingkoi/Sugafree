@@ -64,10 +64,10 @@ const Profile = () => {
               />
             </View>
             <View className='mt-5 space-y-1'>          
-              <Text className='text-xl text-center font-bold'>{user.username}</Text>
+              <Text className='text-xl text-center font-bold'>{user?.username}</Text>
               <View className='flex-row items-center space-x-1'>
                 <Ionicons name="mail-outline" size={15} color="#808080" />
-                <Text className='text-sm font-light text-textSecondary'>{user.email}</Text>
+                <Text className='text-sm font-light text-textSecondary'>{user?.email}</Text>
               </View>
             </View>
             <TouchableOpacity
@@ -98,9 +98,13 @@ const Profile = () => {
                 <Ionicons name="scale-outline" size={24} color="black" />
                 <Text className='text-base'>Weight: {!profile?.weight ? "Undefined" : profile?.weight} kg</Text>
                 </View>                
-                <View className='flex-row items-center space-x-2'>
+                <View className='flex-row items-center space-x-2 border-b border-textSecondary/50 pb-2'>
                 <Ionicons name="color-filter-outline" size={24} color="black" />
                 <Text className='text-base'>Race: {!profile?.race ? "Undefined" : profile?.race}</Text>
+                </View>                  
+                <View className='flex-row items-center space-x-2'>
+                <Ionicons name="medical-outline" size={24} color="black" />
+                <Text className='text-base'>Type: {!profile?.type ? "Undefined" : profile?.type}</Text>
                 </View>                
               </View>
             </View>

@@ -23,6 +23,15 @@ const raceList = [
   {title: 'Others'},
 ]
 
+const typeList = [
+  {title: 'Type 1 Diabetes'},
+  {title: 'Type 2 Diabetes'},
+  {title: 'Gestational Diabetes'},
+  {title: 'Prediabetes'},
+  {title: 'Unsure'},
+  {title: 'Prefer not to say'},
+]
+
 const updateProfile = () => {
 
   const {user} = useGlobalContext()
@@ -35,9 +44,10 @@ const updateProfile = () => {
     const [height, setHeight] = useState("")
     const [weight, setWeight] = useState("")
     const [race, setRace] = useState("")
+    const [type, setType] = useState("")
 
     const handleUpdateProfile = async () => {
-      await updateProfileId(profileId, gender, age, height, weight, race);
+      await updateProfileId(profileId, gender, age, height, weight, race, type);
       router.push("/(tabs)/profile")
     }; 
 
@@ -133,6 +143,35 @@ const updateProfile = () => {
           onSelect={(selectedItem, index) => {
           setRace(selectedItem.title)
           console.log(race)
+          }}
+          renderButton={(selectedItem, isOpened) => {
+          return (
+              <View style={styles.dropdownButtonStyle}>
+              <Text style={styles.dropdownButtonTxtStyle}>
+                  {(selectedItem && selectedItem.title) || 'Select your race'}
+              </Text>
+              <Entypo name={isOpened ? "chevron-up" :"chevron-down"} size={24} color="black" />
+              </View>
+          );
+          }}
+          renderItem={(item, index, isSelected) => {
+          return (
+              <View style={{...styles.dropdownItemStyle, ...(isSelected && {backgroundColor: '#D2D9DF'})}}>
+              <Text className='text-lg'>{item.title}</Text>
+              </View>
+          );
+          }}
+          showsVerticalScrollIndicator={false}
+          dropdownStyle={styles.dropdownMenuStyle}
+          />  
+      </View>      
+      <View className='flex-col space-y-2 my-1'>
+        <Text className='font-bold text-xl'>Type</Text>
+        <SelectDropdown
+          data={typeList}
+          onSelect={(selectedItem, index) => {
+          setType(selectedItem.title)
+          console.log(type)
           }}
           renderButton={(selectedItem, isOpened) => {
           return (

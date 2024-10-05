@@ -6,6 +6,10 @@ import { useGlobalContext } from '@/context/GlobalProvider';
 import { fetchLatestJournal } from '@/lib/appwrite';
 
 function formatDate(isoDateStr:any) {
+
+  if(!isoDateStr){
+    return
+  }else{
     const date = new Date(isoDateStr);
   
     // Extracting date parts
@@ -27,21 +31,24 @@ function formatDate(isoDateStr:any) {
   
     // Return formatted string
     return `${day}/${month}/${year} ${hours}.${formattedMinutes}${ampm}`;
+    }
   }
 
 
-const GlucoseStatus = ({userIn}:any) => {
+const GlucoseStatus = () => {
 
     const { user } = useGlobalContext()
-    const { data : latestJournal } = useAppwrite(()=> fetchLatestJournal(userIn.$id))
+    const { data : latestJournal } = useAppwrite(()=> fetchLatestJournal(user.$id))
+
+    const dateDetails = formatDate(latestJournal?.$createdAt)
 
   return (
-    <View className='rounded-xl py-5 px-4 space-y-3 bg-primary mx-2'>
+    <View className='rounded-xl py-5 px-4 space-y-3 bg-primary mx-2 h-[150px]'>
         <View className='flex-row items-start justify-between'>
             <View className='flex-col'>
                 <Text className='text-3xl font-medium text-white mb-2'>Glucose Status</Text>
-                <Text className='text-white font-medium'>Last update: {formatDate(latestJournal?.$createdAt) ? formatDate(latestJournal.$createdAt) : "Undefined"}</Text>         
-                <Text className='text-white font-medium'>Meal Type: {latestJournal.mealType}</Text>
+                <Text className='text-white font-medium'>Last update: {dateDetails ? dateDetails : "Undefined"}</Text>         
+                <Text className='text-white font-medium'>Meal Type: {latestJournal?.mealType}</Text>
             </View>
             <View>
                 <Fontisto name="laboratory" size={35} color="white" />

@@ -95,7 +95,7 @@ const SaveRecipe = () => {
           )}
           ListEmptyComponent={()=>(
             <EmptyState 
-            title="No articles saved"
+            title="No recipes saved"
             subtitle="Click on the save icon to save them"
             linkPath={'/(tabs)/read'}
             buttonTitle={"Go to read section"}

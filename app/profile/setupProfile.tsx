@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, SafeAreaView, TouchableOpacity, Pressable, StyleSheet, Image,KeyboardAvoidingView } from 'react-native';
-import { createProfile, signOut } from '@/lib/appwrite';
+import {Alert ,View, Text, TextInput, SafeAreaView, TouchableOpacity,  StyleSheet, Image, ScrollView } from 'react-native';
+import { createProfile } from '@/lib/appwrite';
 import { useGlobalContext } from '@/context/GlobalProvider';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router } from 'expo-router';
 import SelectDropdown from 'react-native-select-dropdown'
 import Entypo from '@expo/vector-icons/Entypo';
+import CustomButton from '@/components/CustomButton';
 
 const setupPath = require("@/assets/images/setup.jpg")
 
@@ -22,31 +23,47 @@ const raceList = [
     {title: 'Others'},
 ]
 
+const typeList = [
+    {title: 'Type 1 Diabetes'},
+    {title: 'Type 2 Diabetes'},
+    {title: 'Gestational Diabetes'},
+    {title: 'Prediabetes'},
+    {title: 'Unsure'},
+    {title: 'Prefer not to say'},
+]
+
 const SetupProfile = () => {
-    const {user,setUser,setIsLoggedIn} = useGlobalContext()
+    const {user} = useGlobalContext()
 
     const [gender, setGender] = useState("")
     const [age, setAge] = useState("")
     const [height, setHeight] = useState("")
     const [weight, setWeight] = useState("")
     const [race, setRace] = useState("")
+    const [type, setType] = useState("")
 
-    const logout = async()=>{
-        await signOut()
-        setUser(null)
-        setIsLoggedIn(false)
-        router.replace("/(auth)/sign-in")
-    }
-
+    const [isSubmiting, setIsSubmitting] = useState(false)
 
     const handleCreateProfile = async () => {
-        await createProfile(user.$id, gender, age, height, weight, race);
-        router.push("/(tabs)/home")
+        if(!gender || !age || !height || !weight || !race || !type){
+            // Alert.alert("Error", "Please fill in all the fields")
+            setIsSubmitting(true)
+        }
+        try{
+            await createProfile(user.$id, gender, age, height, weight, race, type)
+            // Set it to global state...
+            router.replace("/(tabs)/home")
+        } catch(error:any){
+            Alert.alert("Error", error.message)
+        } finally{
+        setIsSubmitting(false)
+        }
     };
 
 
   return (
-    <SafeAreaView className='bg-white h-full pt-12 px-4'>
+    <SafeAreaView className='bg-white h-full pt-12 px-7'>
+        <ScrollView>
         <View className='flex-row justify-between items-center w-full mb-5'>
             <View>
               <TouchableOpacity
@@ -164,13 +181,44 @@ const SetupProfile = () => {
                     showsVerticalScrollIndicator={false}
                     dropdownStyle={styles.dropdownMenuStyle}
                     />   
+            </View>              
+            <Text className='text-lg font-bold mb-1'>What type are you?</Text>
+            <View className='flex-row items-center justify-between  mb-3 space-x-1'>         
+                <SelectDropdown
+                    data={typeList}
+                    onSelect={(selectedItem, index) => {
+                    setType(selectedItem.title)
+                    console.log(type)
+                    }}
+                    renderButton={(selectedItem, isOpened) => {
+                    return (
+                        <View style={styles.dropdownButtonStyle}>
+                        <Text style={styles.dropdownButtonTxtStyle}>
+                            {(selectedItem && selectedItem.title) || 'Select your race'}
+                        </Text>
+                        <Entypo name={isOpened ? "chevron-up" :"chevron-down"} size={24} color="black" />
+                        </View>
+                    );
+                    }}
+                    renderItem={(item, index, isSelected) => {
+                    return (
+                        <View style={{...styles.dropdownItemStyle, ...(isSelected && {backgroundColor: '#D2D9DF'})}}>
+                        <Text className='text-lg'>{item.title}</Text>
+                        </View>
+                    );
+                    }}
+                    showsVerticalScrollIndicator={false}
+                    dropdownStyle={styles.dropdownMenuStyle}
+                    />   
             </View>      
         </View>
-        <Pressable className='p-5 bg-primary rounded-xl my-2' onPress={handleCreateProfile}>
-            <Text className='text-white text-[18px] font-bold text-center'>Complete Profile</Text>
-        </Pressable>
+        <CustomButton 
+            title={"Complete Profile"}
+            handlePress={handleCreateProfile}
+            containerStyles={"my-3"}
+            isLoading={isSubmiting}/>
         </View>
-        
+        </ScrollView>
     </SafeAreaView>
   );
 };
