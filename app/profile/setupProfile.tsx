@@ -194,7 +194,7 @@ const SetupProfile = () => {
                     return (
                         <View style={styles.dropdownButtonStyle}>
                         <Text style={styles.dropdownButtonTxtStyle}>
-                            {(selectedItem && selectedItem.title) || 'Select your race'}
+                            {(selectedItem && selectedItem.title) || 'Select your type'}
                         </Text>
                         <Entypo name={isOpened ? "chevron-up" :"chevron-down"} size={24} color="black" />
                         </View>

@@ -11,7 +11,7 @@ const siblingPath = require("@/assets/images/diabetesChecker/siblings.jpg")
 const Siblings = () => {
 
   const {setSibling} = useGlobalContext()
-  
+
   const nextPage = (score:any)=>{
     setSibling(score)
     router.push("/(diabetesChecker)/age")
@@ -45,7 +45,7 @@ const Siblings = () => {
                 </View>
                 {/* Buttons */}
                 <View className='w-full mt-10'>
-                <CustomButton title={"Yes"} containerStyles={"w-full"} textStyles={"text-2xl"} handlePress={()=> nextPage(3)}/>
+                <CustomButton title={"Yes"} containerStyles={"w-full"} textStyles={"text-2xl"} handlePress={()=> nextPage(1)}/>
                 <CustomButton title={"No"} containerStyles={"w-full mt-5"} textStyles={"text-2xl"} handlePress={()=> nextPage(0) }/>
                 </View>
             </View>

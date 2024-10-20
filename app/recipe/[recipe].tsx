@@ -13,7 +13,6 @@ const Recipe = () => {
     const {currentId} = useLocalSearchParams();
     const {user} = useGlobalContext()
     const { data : recipe} = useAppwrite(()=> getSingleRecipe(currentId))
-
     const [bookmark, setBookmark] = useState("bookmark-outline")
     const [isBookmarked, setIsBookmarked] = useState(false); 
     const [loading, setLoading] = useState(false); 
@@ -30,8 +29,6 @@ const Recipe = () => {
       };
       checkBookmarkStatus();
   }, [currentId, user.$id]);
-
-  
 
   const toggleBookmark = async () => {
     if (loading) return;  // Prevent multiple presses during loading
@@ -54,7 +51,6 @@ const Recipe = () => {
         setLoading(false);  // Turn off loading state after operation completes
     }
   };
-
 
     const isoDate = recipe.$createdAt
     const date = new Date(isoDate);

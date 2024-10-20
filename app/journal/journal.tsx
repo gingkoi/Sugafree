@@ -33,9 +33,6 @@ function formatDate(isoDateStr:any) {
 const JournalPage = () => {
     const {user} = useGlobalContext()
     const [journals, setJournals] = useState([]);
-    const [entry, setEntry] = useState('');
-    const [date, setDate] = useState(new Date());
-    const [showPicker, setShowPicker] = useState(false);
 
   useEffect(() => {
     async function loadJournals() {
@@ -45,21 +42,11 @@ const JournalPage = () => {
     loadJournals();
   }, []);
 
-  const handleCreateJournal = async () => {
-    if (entry.trim()) {
-      await createJournal(user.$id, entry, date.toISOString());
-      setEntry('');
-      const updatedJournals = await fetchJournals(user.$id);
-      setJournals(updatedJournals);
-    }
-  };
-
   const handleDeleteJournal = async (documentId : any) => {
     await deleteJournal(documentId);
     const updatedJournals = await fetchJournals(user.$id);
     setJournals(updatedJournals);
   };
-
 
   return (
     <SafeAreaView className='bg-white h-full pt-12 px-4'>

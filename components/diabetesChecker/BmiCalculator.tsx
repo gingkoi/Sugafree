@@ -32,13 +32,14 @@ const BmiCalculator = () => {
     
     // Round to two decimal places
     const results = Number(bmi.toFixed(2))
+    console.log(results)
 
     if(results < 25){
       // Normal
-      setBmi(0)
+      setBmi(1)
     } else if (results >= 25 && results < 29.9){
       // Overweight
-      setBmi(1)
+      setBmi(2)
     } else {
       // Obese
       setBmi(3)

@@ -16,11 +16,11 @@ const Results = () => {
 
   console.log("Total score: ",totalScore)
 
-  if(totalScore < 5){
+  if(totalScore < 2){
     return (
       <LowRisk/>
     )
-  } else if (totalScore >= 5 && totalScore <= 8){
+  } else if (totalScore >= 3 && totalScore <= 5){
     return(
       <MidRisk/>
     )

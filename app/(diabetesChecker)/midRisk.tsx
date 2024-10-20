@@ -8,6 +8,7 @@ const midRiskPath = require("@/assets/images/diabetesChecker/midRisk.png")
 
 const MidRisk = () => {
 
+
   return (
     <SafeAreaView className='flex-1 bg-white'>
       <ScrollView automaticallyAdjustKeyboardInsets={true} className="flex-1">

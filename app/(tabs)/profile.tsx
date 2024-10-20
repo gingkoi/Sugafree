@@ -34,10 +34,6 @@ const Profile = () => {
             <View>
               <TouchableOpacity
                         activeOpacity={0.7}
-                        className=""
-                      //   onPress={()=>{
-                      //     router.push("/(tabs)/home");
-                      // }}
                       >
                         <Ionicons name="chevron-back" size={50} color="white" />
               </TouchableOpacity>

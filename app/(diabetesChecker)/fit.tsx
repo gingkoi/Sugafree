@@ -49,7 +49,7 @@ const Fit = () => {
                 {/* Buttons */}
                 <View className='w-full mt-10'>
                 <CustomButton title={"Yes"} containerStyles={"w-full"} textStyles={"text-2xl"} handlePress={()=> nextPage(0)}/>
-                <CustomButton title={"No"} containerStyles={"w-full mt-5"} textStyles={"text-2xl"} handlePress={()=> nextPage(2)}/>
+                <CustomButton title={"No"} containerStyles={"w-full mt-5"} textStyles={"text-2xl"} handlePress={()=> nextPage(1)}/>
                 </View>
             </View>
         </View>

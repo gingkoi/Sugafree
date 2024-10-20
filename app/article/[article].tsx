@@ -13,8 +13,6 @@ const Article = () => {
     const {currentId} = useLocalSearchParams();
     const {user} = useGlobalContext()
     const { data : article} = useAppwrite(()=> getSinglePost(currentId))
-
-
     const [bookmark, setBookmark] = useState("bookmark-outline")
     const [isBookmarked, setIsBookmarked] = useState(false); 
     const [loading, setLoading] = useState(false); 
@@ -31,8 +29,6 @@ const Article = () => {
       };
       checkBookmarkStatus();
   }, [currentId, user.$id]);
-
-  
 
   const toggleBookmark = async () => {
     if (loading) return;  // Prevent multiple presses during loading
@@ -56,7 +52,6 @@ const Article = () => {
     }
   };
 
-
     const isoDate = article.$createdAt
     const date = new Date(isoDate);
 
@@ -67,7 +62,6 @@ const Article = () => {
 
     // Format as DD/MM/YYYY
     const formattedDate = `${day}/${month}/${year}`;
-
 
     return (
         <SafeAreaView className='bg-primary h-full'>

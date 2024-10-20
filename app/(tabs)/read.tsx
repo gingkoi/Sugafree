@@ -8,18 +8,14 @@ import Recipe from '../read/recipes';
 
 const FirstRoute = () => (
   <Recipe/>
-  
 );
-
 const SecondRoute = () => (
   <Article/>
 );
-
 const renderScene = SceneMap({
   first: FirstRoute,
   second: SecondRoute,
 });
-
 const CustomTabBar = (props:any) => (
   <TabBar
     {...props}
