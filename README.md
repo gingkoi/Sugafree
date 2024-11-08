@@ -1,4 +1,4 @@
-
+![SugaFree Sitemap](https://github.com/user-attachments/assets/ff238771-49ba-48af-935b-f28ce2f1563d)
 # SugaFree
 
 SugaFree is a mobile application designed to empower individuals with diabetes and those looking to prevent it. The app integrates personalised features to help users manage their condition effectively, maintain a healthy lifestyle, and stay informed about their health. From diabetic-friendly recipes to AI-driven predictive tools.
@@ -25,7 +25,7 @@ The project aims to develop a comprehensive platform designed to support in mana
 **Backend:** Appwrite
 
 ## Screenshots
+![Uploading SugaFree Sitemap.png…]()
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
 
