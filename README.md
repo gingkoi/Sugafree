@@ -1,50 +1,21 @@
-# Welcome to your Expo app 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+# SugaFree
 
-## Get started
+SugaFree is a mobile application designed to empower individuals with diabetes and those looking to prevent it. The app integrates personalised features to help users manage their condition effectively, maintain a healthy lifestyle, and stay informed about their health. From diabetic-friendly recipes to AI-driven predictive tools.
 
-1. Install dependencies
+## Project Aims
+The project aims to develop a comprehensive platform designed to support in managing their diabetes and promoting healthier lifestyles in effort of managing and preventing diabetes, supporting individuals in leading healthier, more informed lives.
 
-   ```bash
-   npm install
-   ```
+## Project Objectives
+- Providing users with valuable information and resources on maintaining a healthy lifestyle with contents on nutrition and diabetes management.
+- Develop a feature that allows users to create personal accounts where they can save their favourite healthy recipes. 
+- Alert and notification systems to remind users of their dietary plans.
+- Develop a predictive checker if the user has pre-diabetics.
 
-2. Start the app
+## Features
+- **AI-Powered Chatbot**: Get real-time diabetes health support.
+- **Medical Journaling**: Log glucose level, food dietary and journal thoughts.
+- **Predictive Checker**: Quick test check on the chances of getting prediabetes from a range of low, moderate and high.
+- **Food & Article Section**: Provides a comprehensive library of delicious, diabetes-friendly recipes and articles.
 
-   ```bash
-    npx expo start
-   ```
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
