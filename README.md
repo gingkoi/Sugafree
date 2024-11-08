@@ -24,8 +24,6 @@ The project aims to develop a comprehensive platform designed to support in mana
 
 **Backend:** Appwrite
 
-## Screenshots
-![Uploading SugaFree Sitemap.png…]()
 
 
 
