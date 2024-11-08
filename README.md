@@ -18,4 +18,14 @@ The project aims to develop a comprehensive platform designed to support in mana
 - **Predictive Checker**: Quick test check on the chances of getting prediabetes from a range of low, moderate and high.
 - **Food & Article Section**: Provides a comprehensive library of delicious, diabetes-friendly recipes and articles.
 
+## Tech Stack
+
+**Frontend:** React Native, NativeWind, Expo Go, Expo Vector Icons
+
+**Backend:** Appwrite
+
+## Screenshots
+
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+
 
